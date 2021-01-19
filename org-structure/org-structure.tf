@@ -39,6 +39,7 @@ resource "google_folder" "learning" {
 resource "google_project" "host-non-prod" {
   name       = "Host-Non productiont"
   project_id = "host-non-prod"
+  auto_create_network = false
   folder_id  = google_folder.non-prod-shared.name
   billing_account = "01EFE4-BA1C6D-9714BD"
 }
