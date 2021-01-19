@@ -36,7 +36,7 @@ resource "google_folder" "learning" {
 }
 
 # Create non prod shared resources
-resource "google_project" "non-prod-vpc" {
+resource "google_project" "vpc-non-prod" {
   name       = "VPC - Non productiont"
   project_id = "non-prod-vpc"
   folder_id  = google_folder.non-prod-shared.name
@@ -50,7 +50,7 @@ resource "google_project_service" "service" {
 
   service = each.key
 
-  project            = google_project.non-prod-vpc.project_id
+  project            = google_project.vpc-non-prod.project_id
   disable_on_destroy = false
 }
 
@@ -65,5 +65,5 @@ resource "google_compute_subnetwork" "non-prod-private-us-central1" {
 resource "google_compute_network" "non-prod-network" {
   name = "vpc-network"
   auto_create_subnetworks = false
-  project = google_project.non-prod-vpc.project_id
+  project = google_project.vpc-non-prod.project_id
 }
