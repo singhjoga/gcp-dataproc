@@ -41,7 +41,7 @@ resource "google_project" "host-non-prod" {
   project_id = "host-non-prod"
   auto_create_network = false
   folder_id  = google_folder.non-prod-shared.name
-  billing_account = "01EFE4-BA1C6D-9714BD"
+#  billing_account = "01EFE4-BA1C6D-9714BD"
 }
 
 resource "google_project_service" "service" {
