@@ -41,6 +41,10 @@ resource "google_project" "non-prod-vpc" {
   project_id = "non-prod-vpc"
   folder_id  = google_folder.non-prod-shared.name
 }
+resource "google_project_service" "project" {
+  project = google_project.non-prod-vpc.project_id
+  service = "compute.googleapis.com"
+}
 resource "google_compute_network" "non-prod-network" {
   name = "vpc-network"
   auto_create_subnetworks = false
