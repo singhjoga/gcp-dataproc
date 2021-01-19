@@ -27,7 +27,7 @@ resource "google_folder" "production" {
   parent       = "organizations/422558716844"
 }
 resource "google_folder" "non-prod-shared" {
-  display_name = "Shared"
+  display_name = "Non-Production Shared"
   parent       = google_folder.non-prod.name
 }
 resource "google_folder" "learning" {
