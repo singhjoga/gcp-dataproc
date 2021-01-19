@@ -1,11 +1,21 @@
 terraform {
-  required_version = "~> 0.11"
+  required_version = "~> 0.13"
   required_providers {
     google = {
-      version = "~>= 3.0.0-beta.1"
       source = "hashicorp/google"
+      version = "~> 3.0.0"
     }
   }
+}
+locals {
+  region = "us-central1"
+  zone = "us-central1-a"
+}
+
+provider "google" {
+	project	= "data-proc-301511"
+	region	= local.region
+	zone	= local.zone
 }
 
 resource "google_folder" "non-prod" {
