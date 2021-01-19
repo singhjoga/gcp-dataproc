@@ -14,8 +14,8 @@ locals {
 
 provider "google" {
 	project	= "data-proc-301511"
-	region	= "${local.region}"
-	zone	= "${local.zone}"
+	region	= local.region
+	zone	= local.zone
 }
 
 resource "google_container_cluster" "primary" {
