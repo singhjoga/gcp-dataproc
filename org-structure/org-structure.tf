@@ -44,6 +44,7 @@ resource "google_project" "non-prod-vpc" {
 resource "google_project_service" "project" {
   project = google_project.non-prod-vpc.project_id
   service = "compute.googleapis.com"
+  billing_account = "01EFE4-BA1C6D-9714BD"
 }
 resource "google_compute_network" "non-prod-network" {
   name = "vpc-network"
