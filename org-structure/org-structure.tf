@@ -38,7 +38,7 @@ resource "google_folder" "learning" {
 # Create non prod shared resources
 resource "google_project" "vpc-non-prod" {
   name       = "VPC - Non productiont"
-  project_id = "non-prod-vpc"
+  project_id = "vpc-non-prod"
   folder_id  = google_folder.non-prod-shared.name
   billing_account = "01EFE4-BA1C6D-9714BD"
 }
