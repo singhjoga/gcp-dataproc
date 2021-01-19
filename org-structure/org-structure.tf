@@ -3,7 +3,7 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "~> 3.0.0"
+      version = "~> 3.11.0"
     }
   }
 }
@@ -42,19 +42,28 @@ resource "google_project" "non-prod-vpc" {
   folder_id  = google_folder.non-prod-shared.name
   billing_account = "01EFE4-BA1C6D-9714BD"
 }
-resource "google_project_service" "project" {
-  project = google_project.non-prod-vpc.project_id
-  service = "compute.googleapis.com"
+
+resource "google_project_service" "service" {
+  for_each = toset([
+    "compute.googleapis.com"
+  ])
+
+  service = each.key
+
+  project            = google_project.non-prod-vpc.project_id
+  disable_on_destroy = false
 }
-resource "google_compute_network" "non-prod-network" {
-  name = "vpc-network"
-  auto_create_subnetworks = false
-  project = google_project.non-prod-vpc.project_id
-}
-resource "google_compute_subnetwork" "network-with-private-secondary-ip-ranges" {
+
+
+resource "google_compute_subnetwork" "non-prod-private-us-central1" {
   name          = "non-prod-private-us-central1"
   ip_cidr_range = "10.2.0.0/16"
   region        = "us-central1"
   network       = google_compute_network.non-prod-network.id
 }
 
+resource "google_compute_network" "non-prod-network" {
+  name = "vpc-network"
+  auto_create_subnetworks = false
+  project = google_project.non-prod-vpc.project_id
+}
