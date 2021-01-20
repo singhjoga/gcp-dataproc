@@ -49,20 +49,14 @@ resource "google_folder" "learning" {
 resource "google_project" "vpc-nonprod" {
   name       = "VPC Non-Production"
   project_id = local.vpc_project_id
-#  auto_create_network = false
+  auto_create_network = false
   folder_id  = google_folder.non-prod-shared.id
   billing_account = "01EFE4-BA1C6D-9714BD"
 }
 
-/*
 resource "google_project_service" "service" {
-  for_each = toset([
-    "compute.googleapis.com"
-  ])
-
-  service = each.key
-
-  project            = google_project.host-non-prod.project_id
+  service			 = "compute.googleapis.com"
+  project            = google_project.vpc-nonprod.project_id
   disable_on_destroy = false
 }
 
@@ -77,6 +71,5 @@ resource "google_compute_subnetwork" "non-prod-private-us-central1" {
 resource "google_compute_network" "non-prod-network" {
   name = "vpc-network"
   auto_create_subnetworks = false
-  project = google_project.host-non-prod.project_id
+  project = google_project.vpc-nonprod.project_id
 }
-*/
