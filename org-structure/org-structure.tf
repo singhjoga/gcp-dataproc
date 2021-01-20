@@ -77,6 +77,6 @@ resource "google_compute_subnetwork" "non-prod-private-us-central1" {
 
 resource "google_compute_network" "non-prod-network" {
   name = "vpc-network"
-#  auto_create_subnetworks = false
+  auto_create_subnetworks = false
   project = google_project.vpc-nonprod.project_id
 }
