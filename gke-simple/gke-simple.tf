@@ -3,17 +3,21 @@ terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "~> 3.0.0"
+      version = "~> 3.53.0"
     }
   }
 }
+module "org" {
+  source = "../org-structure"
+}
+
 locals {
   region = "us-central1"
   zone = "us-central1-a"
 }
 
 provider "google" {
-	project	= "data-proc-301511"
+	project	= module.org.gke_learning_project_id
 	region	= local.region
 	zone	= local.zone
 }

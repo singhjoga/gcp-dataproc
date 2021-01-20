@@ -105,3 +105,10 @@ resource "google_compute_shared_vpc_service_project" "service1" {
   host_project    = google_compute_shared_vpc_host_project.shared-vpc-host.project
   service_project = google_project.gke-learning.project_id
 }
+
+output "vpc_host_project_id" {
+	value = google_project.vpc-nonprod.project_id
+}
+output "gke_learning_project_id" {
+	value = google_project.gke-learning.project_id
+}
