@@ -36,9 +36,9 @@ resource "google_folder" "learning" {
 }
 
 # Create non prod shared resources
-resource "google_project" "host-non-prod" {
-  name       = "Host-Non productiont"
-  project_id = "host-non-prod"
+resource "google_project" "test-vpc" {
+  name       = "Test "
+  project_id = "test-vpc"
   auto_create_network = false
   folder_id  = google_folder.non-prod-shared.name
 #  billing_account = "01EFE4-BA1C6D-9714BD"
