@@ -9,7 +9,7 @@ terraform {
 }
 module "org" {
   source = "../org-structure"
-  new_Id = "1"
+  new_id = "1"
 }
 
 locals {
