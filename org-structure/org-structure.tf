@@ -13,7 +13,7 @@ locals {
 }
 
 provider "google" {
-	project	= "data-proc-301511"
+#	project	= "data-proc-301511"
 	region	= local.region
 	zone	= local.zone
 }
@@ -37,7 +37,7 @@ resource "google_folder" "learning" {
 
 # Create non prod shared resources
 resource "google_project" "test-vpc" {
-  name       = "Test "
+  name       = "Test VPC"
   project_id = "test-vpc"
 #  auto_create_network = false
   folder_id  = google_folder.non-prod-shared.id
