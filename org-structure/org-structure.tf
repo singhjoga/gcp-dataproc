@@ -17,7 +17,10 @@ provider "google" {
 	region	= local.region
 	zone	= local.zone
 }
-
+resource "google_folder" "admin" {
+  display_name = "OrgAdmin"
+  parent       = "organizations/422558716844"
+}
 resource "google_folder" "non-prod" {
   display_name = "Non-Production"
   parent       = "organizations/422558716844"
