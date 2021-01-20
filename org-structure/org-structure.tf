@@ -24,6 +24,7 @@ locals {
   region = "us-central1"
   zone = "us-central1-a"
   vpc_project_id = format("%s-%s","vpc-nonprod",random_id.random_project_id_suffix.hex)
+  gke_project_id = format("%s-%s","gke-learning",random_id.random_project_id_suffix.hex)
 }
 
 provider "google" {
@@ -79,4 +80,28 @@ resource "google_compute_network" "non-prod-network" {
   name = "vpc-network"
   auto_create_subnetworks = false
   project = google_project.vpc-nonprod.project_id
+}
+
+resource "google_project" "gke-learning" {
+  name       = "GKE Learning"
+  project_id = local.gke_project_id
+#  auto_create_network = false
+  folder_id  = google_folder.learning.id
+  billing_account = "01EFE4-BA1C6D-9714BD"
+}
+
+resource "google_project_service" "service-1" {
+  service			 = "compute.googleapis.com"
+  project            = google_project.gke-learning.project_id
+  disable_on_destroy = false
+}
+
+
+resource "google_compute_shared_vpc_host_project" "shared-vpc-host" {
+  project = google_project.vpc-nonprod.project_id
+}
+
+resource "google_compute_shared_vpc_service_project" "service1" {
+  host_project    = google_compute_shared_vpc_host_project.shared-vpc-host.project
+  service_project = google_project.gke-learning.project_id
 }
