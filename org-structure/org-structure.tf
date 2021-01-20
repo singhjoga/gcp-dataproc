@@ -43,7 +43,7 @@ resource "google_project" "host-non-prod" {
   folder_id  = google_folder.non-prod-shared.name
 #  billing_account = "01EFE4-BA1C6D-9714BD"
 }
-
+/*
 resource "google_project_service" "service" {
   for_each = toset([
     "compute.googleapis.com"
@@ -68,3 +68,4 @@ resource "google_compute_network" "non-prod-network" {
   auto_create_subnetworks = false
   project = google_project.host-non-prod.project_id
 }
+*/
