@@ -27,7 +27,7 @@ locals {
 }
 
 provider "google" {
-	project	= google_project.vpc-nonprod.project_id
+	project	= "data-proc-301511"
 	region	= local.region
 	zone	= local.zone
 }
