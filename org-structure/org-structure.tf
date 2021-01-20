@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 0.12"
+  required_version = "~> 0.13"
   required_providers {
     google = {
       source = "hashicorp/google"
@@ -34,7 +34,7 @@ resource "google_folder" "learning" {
   display_name = "Learning"
   parent       = google_folder.non-prod.name
 }
-
+/*
 # Create non prod shared resources
 resource "google_project" "test-vpc" {
   name       = "Test VPC"
@@ -43,6 +43,7 @@ resource "google_project" "test-vpc" {
   folder_id  = google_folder.non-prod-shared.id
 #  billing_account = "01EFE4-BA1C6D-9714BD"
 }
+*/
 /*
 resource "google_project_service" "service" {
   for_each = toset([
