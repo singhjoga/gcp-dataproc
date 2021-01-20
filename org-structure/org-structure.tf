@@ -7,9 +7,16 @@ terraform {
     }
   }
 }
+provider "random" {
+  version = "~> 2.2"
+}
+resource "random_id" "random_project_id_suffix" {
+  byte_length = 2
+}
 locals {
   region = "us-central1"
   zone = "us-central1-a"
+  vpc_project_id = format("%s-%s","vpc-nonprod",random_id.random_project_id_suffix.hex)
 }
 
 provider "google" {
@@ -39,9 +46,9 @@ resource "google_folder" "learning" {
 }
 
 # Create non prod shared resources
-resource "google_project" "test-vpc" {
-  name       = "Test VPC"
-  project_id = "test-vpc"
+resource "google_project" "vpc-nonprod" {
+  name       = "VPC Non-Production"
+  project_id = local.vpc_project_id
 #  auto_create_network = false
   folder_id  = google_folder.non-prod-shared.id
   billing_account = "01EFE4-BA1C6D-9714BD"
