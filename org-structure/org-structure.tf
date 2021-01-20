@@ -10,7 +10,14 @@ terraform {
 provider "random" {
   version = "~> 2.2"
 }
+variable "new_id" {
+  type = string
+}
 resource "random_id" "random_project_id_suffix" {
+  keepers = {
+    # Generate a new id each time we switch to a new AMI id
+    ami_id = "${var.new_id}"
+  }
   byte_length = 2
 }
 locals {
