@@ -23,4 +23,5 @@ module "bootstrap" {
   group_org_admins     = "gcp-organization-admins@thetechnovator.com"
   group_billing_admins = "gcp-billing-admins@thetechnovator.com"
   default_region       = "us-central1"
+  folder_id			   = "584686646294"
 }
