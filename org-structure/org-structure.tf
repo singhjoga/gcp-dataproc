@@ -40,8 +40,7 @@ resource "google_project" "test-vpc" {
   name       = "Test "
   project_id = "test-vpc"
   auto_create_network = false
-  folder_id  = google_folder.non-prod-shared.name
-  org_id     = "422558716844"
+  folder_id  = google_folder.non-prod-shared.id
 #  billing_account = "01EFE4-BA1C6D-9714BD"
 }
 /*
