@@ -37,16 +37,16 @@ resource "google_folder" "learning" {
   display_name = "Learning"
   parent       = google_folder.non-prod.name
 }
-/*
+
 # Create non prod shared resources
 resource "google_project" "test-vpc" {
   name       = "Test VPC"
   project_id = "test-vpc"
 #  auto_create_network = false
   folder_id  = google_folder.non-prod-shared.id
-#  billing_account = "01EFE4-BA1C6D-9714BD"
+  billing_account = "01EFE4-BA1C6D-9714BD"
 }
-*/
+
 /*
 resource "google_project_service" "service" {
   for_each = toset([
