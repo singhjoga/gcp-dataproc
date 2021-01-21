@@ -98,12 +98,6 @@ resource "google_project_service" "service-1" {
   project            = google_project.gke-learning.project_id
   disable_on_destroy = false
 }
-resource "google_project_service" "service-1" {
-  service			 = 
-  project            = google_project.gke-learning.project_id
-  disable_on_destroy = false
-}
-
 
 resource "google_compute_shared_vpc_host_project" "shared-vpc-host" {
   project = google_project.vpc-nonprod.project_id
