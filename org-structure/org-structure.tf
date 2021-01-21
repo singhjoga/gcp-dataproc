@@ -120,8 +120,8 @@ output "gke_learning_project_id" {
 
 resource "google_project_iam_member" "project" {
   for_each = toset([
-  	"serviceAccount:${google_project.gke-learning.project_id}@cloudservices.gserviceaccount.com",
-  	"serviceAccount:service-${google_project.gke-learning.project_id}@container-engine-robot.iam.gserviceaccount.com"
+  	"serviceAccount:${google_project.gke-learning.id}@cloudservices.gserviceaccount.com",
+  	"serviceAccount:service-${google_project.gke-learning.id}@container-engine-robot.iam.gserviceaccount.com"
   ])
   project = google_project.gke-learning.project_id
   role    = "roles/compute.networkUser"
