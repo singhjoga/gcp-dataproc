@@ -41,7 +41,7 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 1
   network = "projects/vpc-nonprod-8abf/global/networks/vpc-network"
   subnetwork = "projects/vpc-nonprod-8abf/regions/us-central1/subnetworks/non-prod-private-us-central1"
-  networking_mode = "VPC_NATIVE"
+  networking_mode = "VPC_NATIVE" # must for shared vpc
   ip_allocation_policy {
   	cluster_secondary_range_name="non-prod-private-us-central1-secondary"
   	services_secondary_range_name="non-prod-private-us-central1-secondary"
@@ -56,6 +56,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 2
 
   node_config {
-    machine_type = "f1-micro"
+    machine_type = "f1-small"
   }
 }
