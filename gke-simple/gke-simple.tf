@@ -42,6 +42,9 @@ resource "google_container_cluster" "primary" {
   network = "projects/vpc-nonprod-8abf/global/networks/vpc-network"
   subnetwork = "projects/vpc-nonprod-8abf/regions/us-central1/subnetworks/non-prod-private-us-central1"
   networking_mode = "VPC_NATIVE"
+  ip_allocation_policy {
+  
+  }
 }
 
 
