@@ -26,6 +26,7 @@ provider "google" {
 }
 
 resource "google_container_cluster" "primary" {
+  provider = "google-beta"
   name     = "my-gke-cluster"
   location = local.zone
 
