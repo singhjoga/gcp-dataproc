@@ -34,7 +34,7 @@ resource "google_container_cluster" "primary" {
   # node pool and immediately delete it.
   remove_default_node_pool = true
   initial_node_count       = 1
-  network = "vpc-nonprod-8abf/vpc-network"
+  network = "projects/vpc-nonprod-8abf/global/networks/vpc-network"
 }
 
 
