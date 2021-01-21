@@ -91,12 +91,15 @@ resource "google_project" "gke-learning" {
 }
 
 resource "google_project_service" "service-1" {
-  service			 = "compute.googleapis.com"
+  for_each = toset([
+  	"compute.googleapis.com","container.googleapis.com"
+  ])
+  service			 = each.key
   project            = google_project.gke-learning.project_id
   disable_on_destroy = false
 }
 resource "google_project_service" "service-1" {
-  service			 = "container.googleapis.com"
+  service			 = 
   project            = google_project.gke-learning.project_id
   disable_on_destroy = false
 }
