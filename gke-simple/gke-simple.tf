@@ -34,6 +34,7 @@ resource "google_container_cluster" "primary" {
   # node pool and immediately delete it.
   remove_default_node_pool = true
   initial_node_count       = 1
+  network = "vpc-nonprod-8abf/vpc-network"
 }
 
 
@@ -44,7 +45,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_count = 2
 
   node_config {
-    preemptible  = true
     machine_type = "f1-micro"
   }
 }
