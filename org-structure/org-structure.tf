@@ -63,7 +63,10 @@ resource "google_project" "vpc-nonprod" {
 }
 
 resource "google_project_service" "service" {
-  service			 = "compute.googleapis.com"
+  for_each = toset([
+  	"compute.googleapis.com","container.googleapis.com"
+  ])
+  service			 = each.key
   project            = google_project.vpc-nonprod.project_id
   disable_on_destroy = false
 }
