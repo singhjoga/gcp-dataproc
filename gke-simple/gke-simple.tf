@@ -7,18 +7,20 @@ terraform {
     }
   }
 }
+/*
 module "org" {
   source = "../org-structure"
   new_id = 1
 }
-
+*/
 locals {
   region = "us-central1"
   zone = "us-central1-a"
+  project_id="gke-learning-8abf"
 }
 
 provider "google" {
-	project	= module.org.gke_learning_project_id
+	project	= local.project_id
 	region	= local.region
 	zone	= local.zone
 }
