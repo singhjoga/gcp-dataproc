@@ -79,7 +79,7 @@ resource "google_compute_subnetwork" "non-prod-private-us-central1" {
   network       = google_compute_network.non-prod-network.id
   secondary_ip_range {
     range_name    = "non-prod-private-us-central1-secondary"
-    ip_cidr_range = "192.168.10.0/24"
+    ip_cidr_range = "192.168.0.0/16"  #big range is important
   }
 }
 
