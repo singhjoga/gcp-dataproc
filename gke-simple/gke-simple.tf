@@ -40,7 +40,7 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
   initial_node_count       = 1
   network = "projects/vpc-nonprod-8abf/global/networks/vpc-network"
-  subnetwork = "projects/vpc-nonprod-8abf/regions/us-central1/subnetworks/non-prod-private-us-central1"
+  subnetwork = "projects/vpc-nonprod-8abf/regions/${local.region}/subnetworks/non-prod-private-us-central1"
   networking_mode = "VPC_NATIVE" # must for shared vpc
   ip_allocation_policy {
   	cluster_secondary_range_name="non-prod-private-us-central1-secondary"
