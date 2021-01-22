@@ -134,7 +134,7 @@ resource "google_project_iam_member" "project" {
   role    = "roles/compute.networkUser"
   member  = each.key
   
-  dependes_on = [
+  depends_on = [
   	google_project.gke-learning
   ]
 }
