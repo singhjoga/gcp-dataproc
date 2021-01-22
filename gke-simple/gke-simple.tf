@@ -39,7 +39,7 @@ data "google_compute_network" "shared_vpc" {
  
 data "google_compute_subnetwork" "shared_subnet" {
     name = "non-prod-private-us-central1"
-    project = local.project_id
+    project = local.host_project_id
     region = local.region
 }
 resource "google_container_cluster" "primary" {
