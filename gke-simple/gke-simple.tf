@@ -15,7 +15,7 @@ module "org" {
 */
 locals {
   region = "europe-west6"
-  zone = "europe-west3-6"
+  zone = "europe-west6-a"
   project_id="gke-learning-4caf"
   host_project_id="vpc-nonprod-4caf"
 }
