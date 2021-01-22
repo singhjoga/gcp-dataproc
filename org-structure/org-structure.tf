@@ -141,9 +141,11 @@ resource "google_project_iam_member" "member-3" {
   role    = "roles/container.hostServiceAgentUser"
   member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
 }
-resource "google_project_iam_member" "member-4" {
+resource "google_compute_subnetwork_iam_member" "member-4" {
   project = google_project.vpc-nonprod.project_id
   role    = "roles/compute.networkUser"
+  region  = local.region
+  subnetwork = google_compute_subnetwork.non-prod-private-us-central1.name
   member  = "serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com"
 }
 
