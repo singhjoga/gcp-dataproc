@@ -14,8 +14,8 @@ module "org" {
 }
 */
 locals {
-  region = "us-central1"
-  zone = "us-central1-a"
+  region = "europe-west3"
+  zone = "europe-west3-a"
   project_id="gke-learning-8abf"
 }
 

@@ -21,8 +21,8 @@ resource "random_id" "random_project_id_suffix" {
   byte_length = 2
 }
 locals {
-  region = "us-central1"
-  zone = "us-central1-a"
+  region = "europe-west3"
+  zone = ""europe-west3-a"
   vpc_project_id = format("%s-%s","vpc-nonprod",random_id.random_project_id_suffix.hex)
   gke_project_id = format("%s-%s","gke-learning",random_id.random_project_id_suffix.hex)
 }
@@ -75,7 +75,7 @@ resource "google_project_service" "service" {
 resource "google_compute_subnetwork" "non-prod-private-us-central1" {
   name          = "non-prod-private-us-central1"
   ip_cidr_range = "10.2.0.0/16"
-  region        = "us-central1"
+  region        = local.region
   network       = google_compute_network.non-prod-network.id
   secondary_ip_range {
     range_name    = "non-prod-private-us-central1-secondary"
