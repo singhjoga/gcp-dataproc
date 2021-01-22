@@ -16,7 +16,7 @@ module "org" {
 locals {
   region = "europe-west3"
   zone = "europe-west3-a"
-  project_id="gke-learning-8abf"
+  project_id="gke-learning-e4b0"
 }
 
 provider "google" {
