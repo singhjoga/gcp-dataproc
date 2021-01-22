@@ -124,7 +124,18 @@ output "gke_learning_project_id" {
 
 # assign roles to the service accounts for gke
 
+resource "google_project_iam_member" "member-1" {
+  project = google_project.gke-learning.project_id
+  role    = "roles/compute.networkUser"
+  member  = "serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com"
+}
+resource "google_project_iam_member" "member-1" {
+  project = google_project.gke-learning.project_id
+  role    = "roles/compute.networkUser"
+  member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
+}
 
+/*
 resource "google_project_iam_member" "project" {
   for_each = toset([
   	"serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com",
@@ -138,4 +149,4 @@ resource "google_project_iam_member" "project" {
   	google_project.gke-learning
   ]
 }
-
+*/
