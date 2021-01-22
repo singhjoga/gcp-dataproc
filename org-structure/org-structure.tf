@@ -144,7 +144,7 @@ resource "google_project_iam_member" "member-3" {
 resource "google_project_iam_member" "member-4" {
   project = google_project.vpc-nonprod.project_id
   role    = "roles/compute.networkUser"
-  member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
+  member  = "serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com"
 }
 
 /*
