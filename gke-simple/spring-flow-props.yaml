@@ -1,0 +1,7 @@
+server:
+  service:
+    type: NodePort
+
+skipper:
+  service:
+    type: NodePort
