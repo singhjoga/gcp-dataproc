@@ -21,8 +21,8 @@ resource "random_id" "random_project_id_suffix" {
   byte_length = 2
 }
 locals {
-  region = "europe-west3"
-  zone = "europe-west3-a"
+  region = "europe-west6"
+  zone = "europe-west6-a"
   vpc_project_id = format("%s-%s","vpc-nonprod",random_id.random_project_id_suffix.hex)
   gke_project_id = format("%s-%s","gke-learning",random_id.random_project_id_suffix.hex)
 }
@@ -141,12 +141,15 @@ resource "google_project_iam_member" "member-3" {
   role    = "roles/container.hostServiceAgentUser"
   member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
 }
-resource "google_compute_subnetwork_iam_member" "member-4" {
+resource "google_compute_subnetwork_iam_binding" "member-4" {
   project = google_project.vpc-nonprod.project_id
   role    = "roles/compute.networkUser"
   region  = local.region
   subnetwork = google_compute_subnetwork.non-prod-private-us-central1.name
-  member  = "serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com"
+  members  = [
+  	"serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com",
+  	"group:gcp-network-admins@thetechnovator.com"
+  ]
 }
 
 /*
