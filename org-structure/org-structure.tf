@@ -22,7 +22,7 @@ resource "random_id" "random_project_id_suffix" {
 }
 locals {
   region = "europe-west3"
-  zone = ""europe-west3-a"
+  zone = "europe-west3-a"
   vpc_project_id = format("%s-%s","vpc-nonprod",random_id.random_project_id_suffix.hex)
   gke_project_id = format("%s-%s","gke-learning",random_id.random_project_id_suffix.hex)
 }
