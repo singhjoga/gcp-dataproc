@@ -135,6 +135,18 @@ resource "google_project_iam_member" "member-2" {
   member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
 }
 
+# GKE Service Agent on host project
+resource "google_project_iam_member" "member-3" {
+  project = google_project.vpc-nonprod.project_id
+  role    = "roles/container.hostServiceAgentUser"
+  member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
+}
+resource "google_project_iam_member" "member-4" {
+  project = google_project.vpc-nonprod.project_id
+  role    = "roles/compute.networkUser"
+  member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
+}
+
 /*
 resource "google_project_iam_member" "project" {
   for_each = toset([

@@ -17,6 +17,7 @@ locals {
   region = "europe-west3"
   zone = "europe-west3-a"
   project_id="gke-learning-e4b0"
+  host_project_id="vpc-nonprod-e4b0"
 }
 
 provider "google" {
@@ -29,6 +30,18 @@ provider "google-beta" {
 	region	= local.region
 	zone	= local.zone
 }
+
+data "google_compute_network" "shared_vpc" {
+    name = "vpc-network"
+    project = local.host_project_id
+}
+
+ 
+data "google_compute_subnetwork" "shared_subnet" {
+    name = "non-prod-private-us-central1"
+    project = local.project_id
+    region = local.region
+}
 resource "google_container_cluster" "primary" {
   provider = "google-beta"
   name     = "my-gke-cluster"
@@ -39,8 +52,8 @@ resource "google_container_cluster" "primary" {
   # node pool and immediately delete it.
   remove_default_node_pool = true
   initial_node_count       = 1
-  network = "projects/vpc-nonprod-8abf/global/networks/vpc-network"
-  subnetwork = "projects/vpc-nonprod-8abf/regions/${local.region}/subnetworks/non-prod-private-us-central1"
+  network = data.google_compute_network.shared_vpc.id
+  subnetwork = data.google_compute_subnetwork.shared_subnet.id
   networking_mode = "VPC_NATIVE" # must for shared vpc
   ip_allocation_policy {
   	cluster_secondary_range_name="non-prod-private-us-central1-secondary"
