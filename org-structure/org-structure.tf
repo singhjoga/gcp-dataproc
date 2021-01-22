@@ -129,7 +129,7 @@ resource "google_project_iam_member" "member-1" {
   role    = "roles/compute.networkUser"
   member  = "serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com"
 }
-resource "google_project_iam_member" "member-1" {
+resource "google_project_iam_member" "member-2" {
   project = google_project.gke-learning.project_id
   role    = "roles/compute.networkUser"
   member  = "serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com"
