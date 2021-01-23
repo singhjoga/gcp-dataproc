@@ -148,6 +148,8 @@ resource "google_compute_subnetwork_iam_binding" "member-4" {
   subnetwork = google_compute_subnetwork.non-prod-private-us-central1.name
   members  = [
   	"serviceAccount:${google_project.gke-learning.number}@cloudservices.gserviceaccount.com",
+  	"serviceAccount:${google_project.gke-learning.number}-compute@developer.gserviceaccount.com",
+  	"serviceAccount:service-${google_project.gke-learning.number}@container-engine-robot.iam.gserviceaccount.com",
   	"group:gcp-network-admins@thetechnovator.com"
   ]
 }

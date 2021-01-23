@@ -1,7 +1,11 @@
 server:
   service:
     type: NodePort
+  livenessProbe
+    enabled: false
 
 skipper:
   service:
     type: NodePort
+  livenessProbe
+    enabled: false
