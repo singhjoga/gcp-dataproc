@@ -2,15 +2,15 @@ server:
   service:
     type: NodePort
   livenessProbe:
-    enabled: false
+    enabled: true
   readinessProbe:
-    enabled: false
+    enabled: true
 
 skipper:
   service:
     type: NodePort
   livenessProbe:
-    enabled: false
+    enabled: true
   readinessProbe:
-    enabled: false
+    enabled: true
   
