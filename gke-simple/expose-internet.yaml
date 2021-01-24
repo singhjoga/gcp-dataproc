@@ -9,7 +9,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /*
+      - path: /dataflow
         backend:
           serviceName: my-release-spring-cloud-dataflow-server
           servicePort: 8080
