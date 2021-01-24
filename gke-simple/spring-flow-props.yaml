@@ -14,3 +14,18 @@ skipper:
   readinessProbe:
     enabled: true
   
+mariadb:
+  enabled: false
+
+externalDatabase:
+  driver: mariadb
+  scheme: jdbc
+  host: my-db-mariadb.default.svc.cluster.local
+  password: change-me
+  dataflow:
+    user: dataflow
+    database: dataflow
+  skipper:
+    user: skipper
+    database: skipper
+  
