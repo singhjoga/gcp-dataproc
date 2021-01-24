@@ -5,15 +5,29 @@ kubectl create -f mysql/
 kubectl get all -l app=mysql
 
 
+kubectl create -f server/server-roles.yaml
+kubectl create -f server/server-rolebinding.yaml
+kubectl create -f server/service-account.yaml
 
 
+kubectl create -f skipper/skipper-config-rabbit.yaml
+kubectl create -f skipper/skipper-deployment.yaml
+kubectl create -f skipper/skipper-svc.yaml
+kubectl get all -l app=skipper
 
+kubectl create -f server/server-config.yaml
+kubectl create -f server/server-svc.yaml
+kubectl create -f server/server-deployment.yaml
 
-
-
-
-
+get all -l app=scdf-server
 
 ====delete
 kubectl delete all -l app=rabbitmq
 kubectl delete all,pvc,secrets -l app=mysql
+
+kubectl delete role scdf-role
+kubectl delete rolebinding scdf-rb
+kubectl delete serviceaccount scdf-sa
+
+kubectl delete all,cm -l app=skipper
+kubectl delete all,cm -l app=scdf-server
