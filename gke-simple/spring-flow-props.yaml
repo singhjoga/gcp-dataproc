@@ -19,7 +19,7 @@ mariadb:
 
 externalDatabase:
   driver: org.mariadb.jdbc.Driver
-  scheme: jdbc
+  scheme: mariadb
   host: my-db-mariadb.default.svc.cluster.local
   password: change-me
   dataflow:
