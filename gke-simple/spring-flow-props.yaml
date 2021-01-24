@@ -18,7 +18,7 @@ mariadb:
   enabled: false
 
 externalDatabase:
-  driver: mariadb
+  driver: org.mariadb.jdbc.Driver
   scheme: jdbc
   host: my-db-mariadb.default.svc.cluster.local
   password: change-me
