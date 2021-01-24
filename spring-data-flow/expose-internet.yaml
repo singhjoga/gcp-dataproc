@@ -9,7 +9,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /dataflow/*
+      - path: /*
         backend:
           serviceName: scdf-server
           servicePort: 80
