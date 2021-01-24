@@ -13,7 +13,7 @@ spec:
         backend:
           serviceName: my-release-spring-cloud-dataflow-server
           servicePort: 8080
-      - path: /skipper
-        backend:
-          serviceName: my-release-spring-cloud-dataflow-skipper
-          servicePort: 80
+#      - path: /skipper
+#        backend:
+#          serviceName: my-release-spring-cloud-dataflow-skipper
+#          servicePort: 80
