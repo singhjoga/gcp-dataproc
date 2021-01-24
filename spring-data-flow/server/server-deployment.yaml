@@ -76,7 +76,7 @@ spec:
       initContainers:
       - name: init-mysql-wait
         image: busybox
-        command: ['sh', '-c', 'until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;']
+        command: ['sh', '-c', 'until nc -w3 -z mysql.default.svc.cluster.local 3306; do echo waiting for mysql; sleep 3; done;']
       serviceAccountName: scdf-sa
       volumes:
         - name: config
