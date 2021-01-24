@@ -10,9 +10,9 @@ data:
       metrics:
         export:
           prometheus:
-            enabled: true
+            enabled: false
             rsocket:
-              enabled: true
+              enabled: false
               host: prometheus-proxy
               port: 7001
     spring:

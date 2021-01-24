@@ -1,0 +1,19 @@
+kubectl create -f rabbitmq/
+kubectl get all -l app=rabbitmq
+
+kubectl create -f mysql/
+kubectl get all -l app=mysql
+
+
+
+
+
+
+
+
+
+
+
+====delete
+kubectl delete all -l app=rabbitmq
+kubectl delete all,pvc,secrets -l app=mysql
