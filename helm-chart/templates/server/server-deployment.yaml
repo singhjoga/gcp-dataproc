@@ -76,7 +76,7 @@ spec:
       initContainers:
       - name: init-mysql-wait
         image: busybox:1.28
-        command: ['sh', '-c', "until nslookup mysql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done"]
+        command: ['sh', '-c', "until nslookup mysql.default.svc.cluster.local; do echo waiting for mysql; sleep 2; done"]
      serviceAccountName: scdf-sa
       volumes:
         - name: config
