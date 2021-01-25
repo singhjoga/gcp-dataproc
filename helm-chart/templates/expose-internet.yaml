@@ -5,7 +5,7 @@ metadata:
   annotations:
     # If the class annotation is not specified it defaults to "gce".
     kubernetes.io/ingress.class: "gce"
-    ingress.kubernetes.io/rewrite-target: /
+ #   ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
@@ -14,7 +14,7 @@ spec:
         backend:
           serviceName: scdf-server
           servicePort: 80
-      - path: /api/*
+      - path: /api*
         backend:
           serviceName: skipper
           servicePort: 80
