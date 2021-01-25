@@ -14,10 +14,6 @@ spec:
         backend:
           serviceName: scdf-server
           servicePort: 80
-      - path: /api
-        backend:
-          serviceName: skipper
-          servicePort: 80
       - path: /api/*
         backend:
           serviceName: skipper
