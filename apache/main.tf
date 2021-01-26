@@ -44,7 +44,7 @@ resource "google_compute_instance" "instance_with_ip" {
     network = data.google_compute_network.shared_vpc.id
     subnetwork = data.google_compute_subnetwork.shared_subnet.id
     access_config {
-      nat_ip = data.google_compute_address.ip_address.address
+      nat_ip = "34.117.141.138" //data.google_compute_address.ip_address.address
     }
   }
 }
