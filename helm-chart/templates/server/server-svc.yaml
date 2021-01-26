@@ -6,7 +6,7 @@ metadata:
     app: scdf-server
     spring-deployment-id: scdf
   annotations:
-    cloud.google.com/backend-config: '{"default": "iap-backend-config"}'
+    beta.cloud.google.com/backend-config: '{"default": "iap-backend-config"}'
 spec:
   # If you are running k8s on a local dev box or using minikube, you can use type NodePort instead
   type: NodePort
