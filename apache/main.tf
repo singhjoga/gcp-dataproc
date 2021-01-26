@@ -26,7 +26,11 @@ data "google_compute_network" "shared_vpc" {
 data "google_compute_address" "ip_address" {
   name = "static-ip"
 }
-
+data "google_compute_subnetwork" "shared_subnet" {
+    name = "non-prod-private-us-central1"
+    project = local.host_project_id
+    region = local.region
+}
 resource "google_compute_instance" "instance_with_ip" {
   name         = "apache"
   machine_type = "f1-micro"
@@ -38,6 +42,7 @@ resource "google_compute_instance" "instance_with_ip" {
   }
   network_interface {
     network = data.google_compute_network.shared_vpc.id
+    subnetwork = data.google_compute_subnetwork.shared_subnet.id
     access_config {
       nat_ip = data.google_compute_address.ip_address.address
     }
