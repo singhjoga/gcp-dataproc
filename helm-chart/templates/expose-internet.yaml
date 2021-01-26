@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: cloud.thetechnovator.com
+  - host: 34.65.230.239.xip.io
     http:
       paths:
       - path: /
