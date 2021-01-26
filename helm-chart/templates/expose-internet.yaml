@@ -13,11 +13,11 @@ spec:
 #  - host: 34.117.141.138.xip.io
    - http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: scdf-server
           servicePort: 80
-      - path: /api
+      - path: /api/*
         backend:
           serviceName: skipper
           servicePort: 80       
