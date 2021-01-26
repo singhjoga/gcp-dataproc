@@ -19,7 +19,10 @@ provider "google" {
 	region	= local.region
 	zone	= local.zone
 }
-
+data "google_compute_network" "shared_vpc" {
+    name = "vpc-network"
+    project = local.host_project_id
+}
 data "google_compute_address" "ip_address" {
   name = "static-ip"
 }
@@ -27,9 +30,9 @@ data "google_compute_address" "ip_address" {
 resource "google_compute_instance" "instance_with_ip" {
   name         = "apache"
   machine_type = "f1-micro"
-  zone         = "europe-west6-a"
+  zone         = local.zone
 
-
+  network = data.google_compute_network.shared_vpc.id
   network_interface {
     network = "default"
     access_config {
