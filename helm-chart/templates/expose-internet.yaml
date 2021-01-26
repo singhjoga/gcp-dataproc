@@ -11,7 +11,7 @@ metadata:
 spec:
   rules:
 #  - host: 34.117.141.138.xip.io
-    http:
+   - http:
       paths:
       - path: /*
         backend:
