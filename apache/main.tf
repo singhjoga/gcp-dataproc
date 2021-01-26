@@ -31,10 +31,13 @@ resource "google_compute_instance" "instance_with_ip" {
   name         = "apache"
   machine_type = "f1-micro"
   zone         = local.zone
-
-  network = data.google_compute_network.shared_vpc.id
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-10"
+    }
+  }
   network_interface {
-    network = "default"
+    network = data.google_compute_network.shared_vpc.id
     access_config {
       nat_ip = data.google_compute_address.ip_address.address
     }
