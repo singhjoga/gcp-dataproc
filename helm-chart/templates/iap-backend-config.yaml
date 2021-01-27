@@ -4,6 +4,6 @@ metadata:
   name: iap-backend-config
 spec:
   iap:
-    enabled: false
+    enabled: true
     oauthclientCredentials:
       secretName: iap-secret
