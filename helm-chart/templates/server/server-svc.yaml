@@ -1,8 +1,8 @@
 kind: Service
 apiVersion: v1
 metadata:
-  annotations:
-    cloud.google.com/backend-config: '{"default": "iap-backend-config"}'
+ # annotations:
+  #  cloud.google.com/backend-config: '{"default": "iap-backend-config"}'
   name: scdf-server
   labels:
     app: scdf-server
