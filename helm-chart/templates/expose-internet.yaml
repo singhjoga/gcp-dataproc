@@ -10,7 +10,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: global-ip
 spec:
   rules:
-  - host: 34.117.141.138.xip.io
+  - host: cloud.thetechnovator.com
     http:
       paths:
       - path: /*
