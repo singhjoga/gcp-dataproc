@@ -8,6 +8,7 @@ metadata:
     #kubernetes.io/ingress.class: "nginx"
     #nginx.ingress.kubernetes.io/ssl-redirect: "false"
     kubernetes.io/ingress.global-static-ip-name: global-ip
+    ingress.gcp.kubernetes.io/pre-shared-cert: "cloud-technovator"
 spec:
   rules:
   - host: cloud.thetechnovator.com
